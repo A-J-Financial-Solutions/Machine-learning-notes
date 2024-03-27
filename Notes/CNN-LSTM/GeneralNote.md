@@ -13,7 +13,7 @@ Since this is a regression type of problem where we had to train with time-serie
 
 [https://github.com/Circle-1/Stock-X](notion://github.com/Circle-1/Stock-X)
 
-![Untitled](Images\Architecture for Deep Learning Model.png)
+![Untitled]('Images\Architecture for Deep Learning Model.png')
 
 - Stored fill data in CSV format for testing phase
   - Stock data of a company ranging since 10 years
@@ -21,7 +21,7 @@ Since this is a regression type of problem where we had to train with time-serie
 
 - In the preprocessing phase, we first cleansed the data by removing NULL values from the dataset and taking the mean of data and replacing it if necessary using the Pandas library. Then we took the four columns of any stock market dataset, namely ”Open”, ”Close”, ”High”, ”Low”. These are the columns which mainly involve in training the dataset especially the ”Close” column (shown in Fig. 2). The graphs are plotted using the matplotlib and seaborn library in Python.
 
-![Untitled](Images\Architecture of CNN-LSTM model .png)
+![Untitled]('Images\Architecture of CNN-LSTM model.png')
 
 - For the CNN model to parse the dataset, we made a function where the 1-D arrays are made to convert to [100,1] tensors (precisely, a vector). Tensors are a type of data structures that describe a multilinear relationship between sets of objects in a vector space. So, for converting 1-D array to tensor, every 100 rows are taken and from that the mean of the values are calculated and made to store in a separate column. This process is done for the entire dataset. In our case, we did this on the ”Close” column as it's the main column where we would decide the prediction of the stock data. After this step, we would obtain tensors for the CNN side of the model to train. Then, we split 80% for training and 20% for testing. Finally, we reshaped the data and sent it to the training phase.
 
