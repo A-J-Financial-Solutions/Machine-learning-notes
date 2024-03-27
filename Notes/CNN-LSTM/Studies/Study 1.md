@@ -18,7 +18,7 @@ Bansal, Hasija et al. introduced an innovative decentralized stock market model 
 We opted for a CNN-LSTM Neural Network due to the complementary strengths of CNN and LSTM in feature and pattern recognition, respectively, which is crucial for our time-series dataset.
 
 - The project's code and resources can be found on [GitHub](https://github.com/Circle-1/Stock-X).
-- ![Deep Learning Model Architecture](../../Images/CNN-LSTM/Architecture-for-Deep-Learning-Model.png)
+- ![Deep Learning Model Architecture](../../../Images/CNN-LSTM/Architecture-for-Deep-Learning-Model.png)
 
 ### Data Preparation and Analysis
 
@@ -30,13 +30,13 @@ We opted for a CNN-LSTM Neural Network due to the complementary strengths of CNN
 The preprocessing involved data cleansing (removal of NULL values and mean substitution) and extraction of the four main stock market dataset columns: Open, Close, High, and Low. Notably, the Close column is pivotal for training.
 
 - Graphical representations were created using matplotlib and seaborn libraries.
-- ![CNN-LSTM Architecture](../../Images/CNN-LSTM/Architecture-of-CNN-LSTM-model.png)
+- ![CNN-LSTM Architecture](../../../Images/CNN-LSTM/Architecture-of-CNN-LSTM-model.png)
 
 #### Data Transformation for CNN
 
 A function was devised to convert 1-D arrays into tensors, facilitating the training of the CNN model. After tensor transformation, the dataset was split (80% training, 20% testing), and data reshaping was performed for training initiation.
 
-- ![Dataset Example](../../Images/CNN-LSTM/Dataset.png)
+- ![Dataset Example](../../../Images/CNN-LSTM/Dataset.png)
 
 ### Neural Network Architecture
 
