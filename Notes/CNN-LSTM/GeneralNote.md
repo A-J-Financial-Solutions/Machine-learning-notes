@@ -1,30 +1,47 @@
-LSTM network to predict future trends of stock prices in time steps of 15 minutes based on the price history, alongside technical analysis indicators. On average, 55.9% accuracy was achieved in predicting whether the price of a particular stock may increase or not shortly in the future.
+# LSTM Network Analysis for Stock Price Prediction
 
-Selvin, Menon, Soman et al. in [7] experimented on three different deep learning models, namely CNN, RNN, and LSTM with a sliding window approach.
+An LSTM network was developed to predict future trends of stock prices in 15-minute intervals, utilizing historical price data and technical analysis indicators. The model achieved an average accuracy of 55.9% in predicting the near-term upward or downward movements of a stock's price.
 
-- Out of the three, CNN gave more accurate results than the other two models which is due to the reason that CNN uses only the information on the current window for predicting stock price. This allows CNN to understand the dynamic changes and patterns occurring in the current window.
-- Conversely, RNN and LSTM use information from previous lags for predicting future instances.
+## Comparative Study of Deep Learning Models
 
-Bansal, Hasija et al. in [9] proposed an Intelligent decentralized Stock market model using the convergence of machine learning alongside DAG based cryptocurrency. The ML model which is based on LSTM achieved an accuracy of 99.71% in prediction. The feature vector of stock for the company contained 4 parameter values i.e., ‘open’, ‘close’, ‘low’, and ‘high’ with batch size as 50 for 100 epochs.
+Selvin, Menon, Soman et al. explored the efficacy of three deep learning models: CNN, RNN, and LSTM, employing a sliding window approach.
 
-We decided to go on with CNN-LSTM Neural Network (Convolutional Neural Network and Long Short-Term Memory Neural Network) approach because CNN helps in tracking the features of the dataset and LSTM helps in tracking the patterns, allowing to train on them.
+- **CNN** was found to be superior in terms of accuracy compared to RNN and LSTM. The CNN model's advantage is attributed to its use of only the current window's information for prediction, enabling it to capture dynamic changes and patterns effectively.
+- **RNN and LSTM**, in contrast, incorporate information from previous time steps, which affects their predictive capability for future instances.
 
-Since this is a regression type of problem where we had to train with time-series data, we used Mean Square Error as the standard metric rather than accuracy.
+## Intelligent Decentralized Stock Market Model
 
-[https://github.com/Circle-1/Stock-X](notion://github.com/Circle-1/Stock-X)
+Bansal, Hasija et al. introduced an innovative decentralized stock market model integrating machine learning with DAG-based cryptocurrency. Their LSTM-based ML model demonstrated an exceptional prediction accuracy of 99.71%. The model's feature vector included four key parameters: open, close, low, and high prices, with a batch size of 50 over 100 epochs.
 
-![Deep Learning Model](../../Images/CNN-LSTM/Architecture-for-Deep-Learning-Model.png)
+## Adoption of CNN-LSTM Neural Network
 
-- Stored fill data in CSV format for testing phase
-  - Stock data of a company ranging since 10 years
-- Exploratory Data Analysis on the Data
+We opted for a CNN-LSTM Neural Network due to the complementary strengths of CNN and LSTM in feature and pattern recognition, respectively, which is crucial for our time-series dataset.
 
-- In the preprocessing phase, we first cleansed the data by removing NULL values from the dataset and taking the mean of data and replacing it if necessary using the Pandas library. Then we took the four columns of any stock market dataset, namely ”Open”, ”Close”, ”High”, ”Low”. These are the columns which mainly involve in training the dataset especially the ”Close” column (shown in Fig. 2). The graphs are plotted using the matplotlib and seaborn library in Python.
+- The project's code and resources can be found on [GitHub](https://github.com/Circle-1/Stock-X).
+- ![Deep Learning Model Architecture](../../Images/CNN-LSTM/Architecture-for-Deep-Learning-Model.png)
 
-![Architecture Of CNN-LSTM](../../Images/CNN-LSTM/Architecture-of-CNN-LSTM-model.png)
+### Data Preparation and Analysis
 
-- For the CNN model to parse the dataset, we made a function where the 1-D arrays are made to convert to [100,1] tensors (precisely, a vector). Tensors are a type of data structures that describe a multilinear relationship between sets of objects in a vector space. So, for converting 1-D array to tensor, every 100 rows are taken and from that the mean of the values are calculated and made to store in a separate column. This process is done for the entire dataset. In our case, we did this on the ”Close” column as it's the main column where we would decide the prediction of the stock data. After this step, we would obtain tensors for the CNN side of the model to train. Then, we split 80% for training and 20% for testing. Finally, we reshaped the data and sent it to the training phase.
+- Data spanning ten years was stored in CSV format for the testing phase.
+- An Exploratory Data Analysis was conducted to gain insights into the data.
 
-![Dataset Example](../../Images/CNN-LSTM/Dataset.png)
+#### Preprocessing Phase
 
-3 layers of neuron size 64,128,64 with kernel size=3 along with MaxPooling layers in between. Finally, we added a Flatten layer at the end of the CNN section to convert the tensors back to a 1-D array. All CNN layers are added with TimeDistributed function in order to train every temporal slice of input, as we’re approaching a Time-Series problem in this case. Then, the processed data is sent to the LSTM layers. For the LSTM section, we made 2 Bi-LSTM layers to detect the features and train them forward & backward. For each layer, the neuron size is 100. Additionally, dropout layers are added in between with a value of 0.5 to drop some features for stability. Lastly, we added a dense layer with a linear activation function and at the final layer, we used the "adam" optimizer ("sgd" also worked in this case but we found "adam" optimizer to be more accurate after analysis), Mean Squared Error (mse) as the loss function and "mse" and "mae" as metrics. The architecture for the model is shown in Fig. 4.
+The preprocessing involved data cleansing (removal of NULL values and mean substitution) and extraction of the four main stock market dataset columns: Open, Close, High, and Low. Notably, the Close column is pivotal for training.
+
+- Graphical representations were created using matplotlib and seaborn libraries.
+- ![CNN-LSTM Architecture](../../Images/CNN-LSTM/Architecture-of-CNN-LSTM-model.png)
+
+#### Data Transformation for CNN
+
+A function was devised to convert 1-D arrays into tensors, facilitating the training of the CNN model. After tensor transformation, the dataset was split (80% training, 20% testing), and data reshaping was performed for training initiation.
+
+- ![Dataset Example](../../Images/CNN-LSTM/Dataset.png)
+
+### Neural Network Architecture
+
+- The CNN section comprises three layers with neuron sizes 64, 128, and 64, kernel size of 3, and includes MaxPooling and Flatten layers for tensor manipulation.
+- The LSTM section includes two Bi-LSTM layers with 100 neurons each, enhanced with dropout layers (0.5 rate) for feature selection stability.
+- The model utilizes the "adam" optimizer, Mean Squared Error (MSE) loss function, and tracks MSE and MAE metrics.
+
+The model's architecture facilitates a robust approach to time-series problem-solving, combining CNN's feature extraction capabilities with LSTM's sequential data processing strength.
