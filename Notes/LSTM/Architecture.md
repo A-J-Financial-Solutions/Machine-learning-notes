@@ -24,7 +24,7 @@ LSTMs (Long Short-Term Memory units) are a type of recurrent neural network (RNN
 
    - Determines the percentage of long-term memory to retain.
    - Combines previous short-term memory, current input, and a bias term.
-   - Equation for the combined input: \( x = (p \times w_1) + (i \times w_2) + b \)
+   - Equation for the combined input: \( x=(p \* w_1)+(i \* w_2) + b \)
      - Where \(p\) is the previous short-term memory, \(i\) is the current input, \(w_1\) and \(w_2\) are weights, and \(b\) is the bias.
    - Applies a sigmoid function to this combination to determine the retention rate of long-term memory.
 
