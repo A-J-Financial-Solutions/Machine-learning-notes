@@ -13,7 +13,7 @@ Since this is a regression type of problem where we had to train with time-serie
 
 [https://github.com/Circle-1/Stock-X](notion://github.com/Circle-1/Stock-X)
 
-![Untitled]('Images\Architecture for Deep Learning Model.png')
+![Untitled]('../Images/Architecture for Deep Learning Model.png')
 
 - Stored fill data in CSV format for testing phase
   - Stock data of a company ranging since 10 years
